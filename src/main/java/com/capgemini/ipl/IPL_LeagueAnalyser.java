@@ -66,18 +66,18 @@ public class IPL_LeagueAnalyser {
 	}
 
 	/**
-	 * UC7
+	 * UC7 UC11
 	 * 
 	 * @return
 	 */
 	public String getMaximumBowlingAverageCricketers() {
 		List<Bowler> sortedBowlerList = bowlerList.stream().filter(n -> n.getAverage() > 0)
-				.sorted(Comparator.comparing(Bowler::getAverage)).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Bowler::getAverage).thenComparing(Bowler::getStrikeRate)).collect(Collectors.toList());
 		return toJson(sortedBowlerList);
 	}
 
 	/**
-	 * UC8
+	 * UC8 UC10
 	 * 
 	 * @return
 	 */
@@ -89,7 +89,7 @@ public class IPL_LeagueAnalyser {
 	}
 
 	/**
-	 * UC8
+	 * UC9
 	 * 
 	 * @return
 	 */
