@@ -14,13 +14,14 @@ public class IPL_LeagueAnalyser {
 	}
 
 	/**
-	 * UC1
+	 * UC1 UC5
 	 * 
 	 * @return
 	 */
 	public String getBestBattingAveragesCricketers() {
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
-				.sorted(Comparator.comparing(Batsman::getAverage).reversed()).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Batsman::getAverage).thenComparing(Batsman::getStrikeRate).reversed())
+				.collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
