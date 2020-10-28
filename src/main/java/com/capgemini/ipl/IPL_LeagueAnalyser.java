@@ -13,7 +13,7 @@ public class IPL_LeagueAnalyser {
 	public void loadBatsmanData(String BATSMAN_CSV_PATH) throws IPLAnalyserException {
 		batsmanList = new CSVBatsman().loadBatsmanList(BATSMAN_CSV_PATH);
 	}
-	
+
 	public void loadBowlerData(String BOWLER_CSV_PATH) throws IPLAnalyserException {
 		bowlerList = new CSVBowler().loadBowlerList(BOWLER_CSV_PATH);
 	}
@@ -64,29 +64,36 @@ public class IPL_LeagueAnalyser {
 				.collect(Collectors.toList());
 		return toJson(sortedBatsmanList);
 	}
-	
+
 	/**
 	 * UC7
 	 * 
 	 * @return
 	 */
 	public String getMaximumBowlingAverageCricketers() {
-		List<Bowler> sortedBowlerList = bowlerList.stream()
-				.filter(n -> n.getAverage()>0)
-				.sorted(Comparator.comparing(Bowler::getAverage))
-				.collect(Collectors.toList());
+		List<Bowler> sortedBowlerList = bowlerList.stream().filter(n -> n.getAverage() > 0)
+				.sorted(Comparator.comparing(Bowler::getAverage)).collect(Collectors.toList());
 		return toJson(sortedBowlerList);
 	}
-	
+
 	/**
 	 * UC8
 	 * 
 	 * @return
 	 */
 	public String getMaximumBowlingStrikeRatesCricketers() {
-		List<Bowler> sortedBowlerList = bowlerList.stream()
-				.filter(n -> n.getStrikeRate()>0)
-				.sorted(Comparator.comparing(Bowler::getStrikeRate))
+		List<Bowler> sortedBowlerList = bowlerList.stream().filter(n -> n.getStrikeRate() > 0)
+				.sorted(Comparator.comparing(Bowler::getStrikeRate)).collect(Collectors.toList());
+		return toJson(sortedBowlerList);
+	}
+
+	/**
+	 * UC8
+	 * 
+	 * @return
+	 */
+	public String getBestEconomyCricketers() {
+		List<Bowler> sortedBowlerList = bowlerList.stream().sorted(Comparator.comparing(Bowler::getStrikeRate))
 				.collect(Collectors.toList());
 		return toJson(sortedBowlerList);
 	}
