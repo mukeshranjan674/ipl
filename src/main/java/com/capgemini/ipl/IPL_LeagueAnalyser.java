@@ -48,6 +48,18 @@ public class IPL_LeagueAnalyser {
 		return toJson(sortedStateBatsmanList);
 	}
 
+	/**
+	 * UC6
+	 * 
+	 * @return
+	 */
+	public String getMaximumRunsCricketers() {
+		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
+				.sorted(Comparator.comparing(Batsman::getRunsScored).thenComparing(Batsman::getAverage).reversed())
+				.collect(Collectors.toList());
+		return toJson(sortedStateBatsmanList);
+	}
+
 	public <E> String toJson(List<E> list) {
 		return new Gson().toJson(list);
 	}
