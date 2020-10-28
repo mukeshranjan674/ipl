@@ -42,7 +42,7 @@ public class Batsman {
 
 	@CsvBindByName(column = "6s", required = true)
 	private int sixes;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -93,5 +93,9 @@ public class Batsman {
 
 	public int getSixes() {
 		return sixes;
+	}
+	
+	public int getBoundries() {
+		return this.fours + this.sixes;
 	}
 }

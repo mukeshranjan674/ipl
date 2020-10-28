@@ -13,15 +13,36 @@ public class IPL_LeagueAnalyser {
 		batsmanList = new CSVBatsman().loadBatsmanList(PATH);
 	}
 
+	/**
+	 * UC1
+	 * 
+	 * @return
+	 */
 	public String getBestBattingAveragesCricketers() {
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
 				.sorted(Comparator.comparing(Batsman::getAverage).reversed()).collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
+	/**
+	 * UC2
+	 * 
+	 * @return
+	 */
 	public String getBestStrikeRateCricketers() {
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
 				.sorted(Comparator.comparing(Batsman::getStrikeRate).reversed()).collect(Collectors.toList());
+		return toJson(sortedStateBatsmanList);
+	}
+
+	/**
+	 * UC3
+	 * 
+	 * @return
+	 */
+	public String getMaximumBoundriesCricketers() {
+		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
+				.sorted(Comparator.comparing(Batsman :: getBoundries).reversed()).collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
