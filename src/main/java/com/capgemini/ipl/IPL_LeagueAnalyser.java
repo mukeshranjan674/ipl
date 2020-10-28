@@ -151,8 +151,6 @@ public class IPL_LeagueAnalyser {
 				.filter(n -> n.getBowlingAverage() > 0 & n.getBattingAverage() > 0)
 					  .sorted(Comparator.comparing(AllRounder::getBattingAverage).reversed())
 					  .collect(Collectors.toList());
-		System.out.println(battingAllRounderList);
-		
 		
 		List<AllRounder> bowlingAllRounderList = allRounderList.stream()
 				.filter(n -> n.getBowlingAverage() > 0 & n.getBattingAverage() > 0)
@@ -197,11 +195,25 @@ public class IPL_LeagueAnalyser {
 	public String getMaximumHundredsCricketers() {
 		List<Batsman> sortedBatsmanList = batsmanList.stream()
 				.filter(n -> n.getCenturies() > 0)
-				.sorted(Comparator.comparing(Batsman::getCenturies).reversed().thenComparing(Batsman::getAverage).reversed())
+				.sorted(Comparator.comparing(Batsman::getCenturies).reversed()
+				.thenComparing(Batsman::getAverage).reversed())
 				.collect(Collectors.toList());
 		return toJson(sortedBatsmanList);
 	}
 	
+	
+	/**
+	 * UC16
+	 * @return
+	 */
+	
+	public String getBestBattingAverageBelowFiftyCricketers() {
+		List<Batsman> sortedBatsmanList = batsmanList.stream()
+				.filter(n -> n.getCenturies() == 0 && n.getFifties() == 0)
+				.sorted(Comparator.comparing(Batsman::getAverage).reversed())
+				.collect(Collectors.toList());
+		return toJson(sortedBatsmanList);
+	}
 	public <E> String toJson(List<E> list) {
 		return new Gson().toJson(list);
 	}
