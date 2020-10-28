@@ -25,13 +25,14 @@ public class IPL_LeagueAnalyser {
 	}
 
 	/**
-	 * UC2
+	 * UC2 UC4
 	 * 
 	 * @return
 	 */
 	public String getBestStrikeRateCricketers() {
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
-				.sorted(Comparator.comparing(Batsman::getStrikeRate).reversed()).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Batsman::getStrikeRate).thenComparing(Batsman::getBoundries).reversed())
+				.collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
@@ -42,7 +43,7 @@ public class IPL_LeagueAnalyser {
 	 */
 	public String getMaximumBoundriesCricketers() {
 		List<Batsman> sortedStateBatsmanList = batsmanList.stream()
-				.sorted(Comparator.comparing(Batsman :: getBoundries).reversed()).collect(Collectors.toList());
+				.sorted(Comparator.comparing(Batsman::getBoundries).reversed()).collect(Collectors.toList());
 		return toJson(sortedStateBatsmanList);
 	}
 
