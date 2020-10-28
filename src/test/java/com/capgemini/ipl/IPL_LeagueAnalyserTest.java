@@ -104,14 +104,24 @@ public class IPL_LeagueAnalyserTest {
 	}
 
 	/**
-	 * UC12
+	 * UC13
 	 */
 	@Test
 	public void givenCSVFile_shouldReturn_CricketersWith_BattingAndBowlingAverages() {
-		String sortedBowlerData = ipl_LeagueAnalyser.getBattingAndBowlingAveragesCricketers();
-		AllRounder[] sortedAllRounderArray = new Gson().fromJson(sortedBowlerData, AllRounder[].class);
-		System.out.println(sortedAllRounderArray[1].getName() + sortedAllRounderArray[1].getBattingAverage()
-				+ sortedAllRounderArray[1].getBowlingAverage());
+		String sortedAllRounderData = ipl_LeagueAnalyser.getBattingAndBowlingAveragesCricketers();
+		AllRounder[] sortedAllRounderArray = new Gson().fromJson(sortedAllRounderData, AllRounder[].class);
+		assertEquals("Andre Russell", sortedAllRounderArray[0].getName());
+		assertEquals("Kagiso Rabada", sortedAllRounderArray[1].getName());
+	}
+	
+	/**
+	 * UC14
+	 */
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_MostRunsAndWickets() {
+		String sortedAllRounderData = ipl_LeagueAnalyser.getMostRunsAndWicketsCricketers();
+		AllRounder[] sortedAllRounderArray = new Gson().fromJson(sortedAllRounderData, AllRounder[].class);
+		System.out.println(sortedAllRounderArray[0].getName() + sortedAllRounderArray[0].getRunsScored());
 		assertEquals("Andre Russell", sortedAllRounderArray[0].getName());
 		assertEquals("Kagiso Rabada", sortedAllRounderArray[1].getName());
 	}
