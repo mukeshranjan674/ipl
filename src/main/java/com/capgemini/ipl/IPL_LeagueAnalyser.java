@@ -187,6 +187,21 @@ public class IPL_LeagueAnalyser {
 		sortedAllRounderList.add(bowlingAllRounderList.get(0));
 		return toJson(sortedAllRounderList);
 	}
+	
+	
+	/**
+	 * UC15
+	 * @return
+	 */
+	
+	public String getMaximumHundredsCricketers() {
+		List<Batsman> sortedBatsmanList = batsmanList.stream()
+				.filter(n -> n.getCenturies() > 0)
+				.sorted(Comparator.comparing(Batsman::getCenturies).reversed().thenComparing(Batsman::getAverage).reversed())
+				.collect(Collectors.toList());
+		return toJson(sortedBatsmanList);
+	}
+	
 	public <E> String toJson(List<E> list) {
 		return new Gson().toJson(list);
 	}
