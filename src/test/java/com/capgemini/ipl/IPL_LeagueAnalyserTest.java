@@ -33,7 +33,7 @@ public class IPL_LeagueAnalyserTest {
 	}
 	
 	/**
-	 * UC2
+	 * UC2 UC4
 	 */
 	@Test
 	public void givenCSVFile_shouldReturn_CricketersWith_TopStrikingRates() {
