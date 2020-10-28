@@ -22,7 +22,7 @@ public class IPL_LeagueAnalyserTest {
 	}
 	
 	/**
-	 * UC1
+	 * UC1 UC5
 	 */
 	@Test
 	public void givenCSVFile_shouldReturn_CricketersWith_TopBattingAverages() {
@@ -39,8 +39,8 @@ public class IPL_LeagueAnalyserTest {
 	public void givenCSVFile_shouldReturn_CricketersWith_TopStrikingRates() {
 		String sortedBatsmanData = ipl_LeagueAnalyser.getBestStrikeRateCricketers();
 		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
-		System.out.println(sortedBatsmanArray[0].getName());
-		assertEquals("Ishant Sharma", sortedBatsmanArray[0].getName());
+		System.out.println(sortedBatsmanArray[0].getName()+ sortedBatsmanArray[0].getStrikeRate());
+		assertEquals("Andre Russell", sortedBatsmanArray[0].getName());
 	}
 	
 	/**
