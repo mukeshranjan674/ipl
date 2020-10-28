@@ -77,6 +77,19 @@ public class IPL_LeagueAnalyser {
 				.collect(Collectors.toList());
 		return toJson(sortedBowlerList);
 	}
+	
+	/**
+	 * UC8
+	 * 
+	 * @return
+	 */
+	public String getMaximumBowlingStrikeRatesCricketers() {
+		List<Bowler> sortedBowlerList = bowlerList.stream()
+				.filter(n -> n.getStrikeRate()>0)
+				.sorted(Comparator.comparing(Bowler::getStrikeRate))
+				.collect(Collectors.toList());
+		return toJson(sortedBowlerList);
+	}
 
 	public <E> String toJson(List<E> list) {
 		return new Gson().toJson(list);
