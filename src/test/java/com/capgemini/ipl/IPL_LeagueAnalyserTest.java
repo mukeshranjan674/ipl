@@ -25,7 +25,7 @@ public class IPL_LeagueAnalyserTest {
 	 * UC1 UC5
 	 */
 	@Test
-	public void givenCSVFile_shouldReturn_CricketersWith_TopBattingAverages() {
+	public void givenCSVFile_shouldReturn_CricketersWith_TopBattingAverages_WithBestStrikeRates() {
 		String sortedBatsmanData = ipl_LeagueAnalyser.getBestBattingAveragesCricketers();
 		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
 		System.out.println(sortedBatsmanArray[0].getAverage());
@@ -36,7 +36,7 @@ public class IPL_LeagueAnalyserTest {
 	 * UC2 UC4
 	 */
 	@Test
-	public void givenCSVFile_shouldReturn_CricketersWith_TopStrikingRates() {
+	public void givenCSVFile_shouldReturn_CricketersWith_TopStrikingRates_WithMaximumBoundries() {
 		String sortedBatsmanData = ipl_LeagueAnalyser.getBestStrikeRateCricketers();
 		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
 		System.out.println(sortedBatsmanArray[0].getName()+ sortedBatsmanArray[0].getStrikeRate());
@@ -52,5 +52,16 @@ public class IPL_LeagueAnalyserTest {
 		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
 		System.out.println(sortedBatsmanArray[0].getName() + sortedBatsmanArray[0].getBoundries());
 		assertEquals("Andre Russell", sortedBatsmanArray[0].getName());
+	}
+	
+	/**
+	 * UC6
+	 */
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_MaximumRuns_WithBestAverages() {
+		String sortedBatsmanData = ipl_LeagueAnalyser.getMaximumRunsCricketers();
+		Batsman[] sortedBatsmanArray = new Gson().fromJson(sortedBatsmanData, Batsman[].class);
+		System.out.println(sortedBatsmanArray[0].getName() + sortedBatsmanArray[0].getAverage());
+		assertEquals("David Warner", sortedBatsmanArray[0].getName());
 	}
 }
