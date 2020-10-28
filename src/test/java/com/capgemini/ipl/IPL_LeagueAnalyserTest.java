@@ -64,10 +64,10 @@ public class IPL_LeagueAnalyserTest {
 	}
 	
 	/**
-	 * UC7
+	 * UC7 UC11
 	 */
 	@Test
-	public void givenCSVFile_shouldReturn_CricketersWith_MaximumBowlingAverages() {
+	public void givenCSVFile_shouldReturn_CricketersWith_MaximumBowlingAverages_WithBestStrikeRate() {
 		String sortedBowlerData = ipl_LeagueAnalyser.getMaximumBowlingAverageCricketers();
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
 		assertEquals("Anukul Roy", sortedBowlerArray[0].getName());
