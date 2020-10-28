@@ -90,7 +90,17 @@ public class IPL_LeagueAnalyserTest {
 	public void givenCSVFile_shouldReturn_CricketersWith_BestEconomy() {
 		String sortedBowlerData = ipl_LeagueAnalyser.getBestEconomyCricketers();
 		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
-		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getEconomy());
 		assertEquals("Shivam Dube", sortedBowlerArray[0].getName());
+	}
+	
+	/**
+	 * UC12
+	 */
+	@Test
+	public void givenCSVFile_shouldReturn_CricketersWith_MaximumWickets_WithBestBowlingAverages() {
+		String sortedBowlerData = ipl_LeagueAnalyser.getMaximumWicketsCricketers();
+		Bowler[] sortedBowlerArray = new Gson().fromJson(sortedBowlerData, Bowler[].class);
+		System.out.println(sortedBowlerArray[0].getName() + sortedBowlerArray[0].getWicketsTaken());
+		assertEquals("Imran Tahir", sortedBowlerArray[0].getName());
 	}
 }
