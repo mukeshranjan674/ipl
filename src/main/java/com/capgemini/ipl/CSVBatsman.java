@@ -12,11 +12,11 @@ import com.opencsvbuilder.CSVException;
 import com.opencsvbuilder.ICSVBuilder;
 
 public class CSVBatsman {
-	public List<Batsman> loadBatsmanList(String BATSMAN_CSV_DATA) throws IPLAnalyserException {
-		try (Reader reader = Files.newBufferedReader(Paths.get(BATSMAN_CSV_DATA));) {
+	public List<Batsman> loadBatsmanList(String BATSMAN_CSV_PATH) throws IPLAnalyserException {
+		try (Reader reader = Files.newBufferedReader(Paths.get(BATSMAN_CSV_PATH));) {
 			ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
-			List<Batsman> stateCensusList = icsvBuilder.getCsvFileList(reader, Batsman.class);
-			return stateCensusList;
+			List<Batsman> batsmanList = icsvBuilder.getCsvFileList(reader, Batsman.class);
+			return batsmanList;
 		} catch (IOException e) {
 			throw new IPLAnalyserException(e.getMessage(), ExceptionType.FILE_NOT_FOUND);
 		} catch (CSVException e) {
